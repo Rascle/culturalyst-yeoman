@@ -7,10 +7,16 @@ class SignupController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state) {
+  constructor(Auth, $state, $scope) {
     this.Auth = Auth;
     this.$state = $state;
+    $scope.getCurrentUser = function() {
+      this.user = Auth.getCurrentUser();
+      console.log(this.user);
+    }
   }
+
+  
 
   register(form) {
     this.submitted = true;

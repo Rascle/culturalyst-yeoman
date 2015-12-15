@@ -99,9 +99,9 @@ exports.showArtist = function(req, res, next) {
         return res.status(404).end();
       }
       (function() {/////THIS WILL PROBABLY NEED SOME ASYNC HELP!?!?
-        User.getCreatives().then(function(info) {
-          artistInfo.info = info;
-        });
+        // User.getCreatives().then(function(info) {
+        //   artistInfo.info = info;
+        // });
         User.getRewards().then(function(rewards) {
           artistInfo.rewards = rewards;
         });
@@ -109,7 +109,7 @@ exports.showArtist = function(req, res, next) {
           artistInfo.media = media;
         })
         artistInfo.profile = user.profile;
-      }()).then(funtion() {
+      }()).then(function() {
         res.json(artistInfo);
       })
     })
