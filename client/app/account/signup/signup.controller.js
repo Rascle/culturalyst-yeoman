@@ -26,8 +26,8 @@ class SignupController {
 
     if (form.$valid) {
       this.Auth.createUser({
-          // catalyst: this.user.catalyst,
-          // creative: this.user.creative,
+          //catalyst: this.user.catalyst,
+          //creative: this.user.creative,
           name: this.user.name,
           email: this.user.email,
           password: this.user.password,
@@ -54,9 +54,8 @@ class SignupController {
   }
 
   // edit this to work on the next page
-  // userDetail() {
-  //   //for form validation
-  //   // this.submitted = true;
+  userDetail() {
+    //this.submitted = true;
 
   //   // could I use currentUser()()._id instead of this.Auth.getCurrentUser
   //   this.$http.put('/api/users/' + this.Auth.getCurrentUser()._id + '/updateUserInfo', {
