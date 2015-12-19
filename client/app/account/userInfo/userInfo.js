@@ -1,3 +1,4 @@
+/*
 'use strict';
 
 angular.module('culturalystApp')
@@ -9,3 +10,4 @@ angular.module('culturalystApp')
   //       controller: 'UserInfoCtrl'
   //     });
   // });
+*/

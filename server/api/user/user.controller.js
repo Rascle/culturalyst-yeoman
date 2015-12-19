@@ -88,16 +88,16 @@ exports.show = function(req, res, next) {
 exports.showResults = function(req, res, next) {
   var query;
 
-  if (req.params.submedium !== undefined){
+  if (req.params.submedium !== undefined) {
     query = {submedium: req.params.submedium};
     console.log(req.params.submedium);
   } else {
-    query = {medium:req.params.medium}
+    query = {medium: req.params.medium}
   }
 
   User.findAll({
       where: query
-      })
+    })
     .then(function(users) {
       if (!users) {
         console.log('No users');
@@ -157,7 +157,7 @@ exports.updateUserInfo = function(req, res, next) {
   var name = String(req.body.name);
   var email = String(req.body.email);
   var location = String(req.body.location);
-  var birthday = Date(req.body.birthday);
+  //var birthday = Date(req.body.birthday);
 
   User.find({
       where: {
@@ -165,18 +165,15 @@ exports.updateUserInfo = function(req, res, next) {
       }
     })
     .then(function(user) {
-      console.log(user)
-      user.updateAttributes({
-        name: name,
-        email: email,
-        location: location,
-        birthday: birthday
-      })
-      .then(function() {
-        console.log("UPDATED")
-        res.status(204).end();
-      })
-      .catch(validationError(res));
+      user.name = name;
+      user.email = email;
+      user.location = location;
+      //birthday: birthday
+      return user.save()
+        .then(function() {
+          res.status(204).end();
+        })
+        .catch(validationError(res));
     });
 };
 

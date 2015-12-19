@@ -10,33 +10,43 @@ class ArtistSignupController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $log, $scope, $http, $timeout) {
+  constructor(Auth, $state, $log, $scope, $http, $timeout, MediaList) {
     this.Auth = Auth;
+    this.currentUser = this.Auth.getCurrentUser();
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
     this.$http = $http;
     this.$timeout = $timeout;
+    this.MediaList = MediaList;
     this.list = [];
+    this.$scope.mediaList = this.MediaList.getMediaList();
   }
 
-  currentUser() {
-    return this.Auth.getCurrentUser;
-  }
+  //currentUser() {
+  //  return this.Auth.getCurrentUser;
+  //}
+
+  loadSubMediums(medium) {
+    this.$scope.selectedMedium = medium.name;
+    this.$scope.submedia = medium.submedia;
+  };
 
   // go to content
   register() {
     let context = this;
 
-    this.$http.put('/api/users/' + this.currentUser()._id + '/updateUserInfo', {
-        name: this.user.name,
-        email: this.user.email,
-        bio: this.user.bio
-      })
-      .then(() => {
-        context.$timeout(this.$state.go('artistSignupContent'), 1000);
-        this.$state.go('main');
-      });
+    this.$http.put('/api/users/' + this.currentUser._id + '/updateArtistInfo', {
+      bio: context.$scope.bio,
+      medium: context.$scope.selectedMedium,
+      submedium: context.$scope.selectedSubmedium
+    });
+
+    this.$state.go('artistSignupContent');
+    //.then(() => {
+    //  context.$timeout(this.$state.go('artistSignupContent'), 1000);
+    //  //this.$state.go('main');
+    //});
 
     // refactor to grab from the html forms
     //this.Auth.updateUserInfo({

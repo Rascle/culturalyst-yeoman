@@ -23,7 +23,6 @@ class SignupController {
 
   register(form) {
     this.submitted = true;
-    let context = this;
 
     let context = this;
 
