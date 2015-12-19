@@ -155,8 +155,9 @@ exports.changePassword = function(req, res, next) {
 exports.updateUserInfo = function(req, res, next) {
   var userId = req.user._id;
   var name = String(req.body.name);
+  var email = String(req.body.email);
   var location = String(req.body.location);
-  var birthday = String(req.body.birthday);
+  var birthday = Date(req.body.birthday);
 
   User.find({
       where: {
@@ -164,14 +165,18 @@ exports.updateUserInfo = function(req, res, next) {
       }
     })
     .then(function(user) {
-      user.name = name;
-      user.location = location;
-      user.birthday = birthday;
-      return user.save()
-        .then(function() {
-          res.status(204).end();
-        })
-        .catch(validationError(res));
+      console.log(user)
+      user.updateAttributes({
+        name: name,
+        email: email,
+        location: location,
+        birthday: birthday
+      })
+      .then(function() {
+        console.log("UPDATED")
+        res.status(204).end();
+      })
+      .catch(validationError(res));
     });
 };
 
@@ -190,6 +195,8 @@ exports.me = function(req, res, next) {
         'name',
         'email',
         'role',
+        'location',
+        'birthday',
         'provider'
       ]
     })

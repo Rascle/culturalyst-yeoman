@@ -37,6 +37,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     location: DataTypes.STRING,
+    birthday: DataTypes.DATE,
     picUrl: DataTypes.STRING,
     img: DataTypes.STRING,
     medium: DataTypes.STRING,

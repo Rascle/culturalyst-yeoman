@@ -67,6 +67,13 @@ angular.module('culturalystApp')
         controller: 'SettingsController',
         controllerAs: 'vm',
         authenticate: true
+      })
+      .state('userInfo', {
+        url: '/userInfo',
+        templateUrl: 'app/account/userInfo/userInfo.html',
+        controller: 'UserInfoController',
+        controllerAs: 'vm',
+        authenticate: true
       });
   })
   .run(function($rootScope) {
