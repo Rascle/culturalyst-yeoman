@@ -153,11 +153,11 @@ exports.changePassword = function(req, res, next) {
  * Update the users information
  */
 exports.updateUserInfo = function(req, res, next) {
+  console.log("Updating Info!");
   var userId = req.user._id;
-  var name = String(req.body.name);
-  var email = String(req.body.email);
-  var location = String(req.body.location);
-  //var birthday = Date(req.body.birthday);
+  var name = req.body.name;
+  var email = req.body.email;
+  var location = req.body.location;
 
   User.find({
       where: {
@@ -165,15 +165,14 @@ exports.updateUserInfo = function(req, res, next) {
       }
     })
     .then(function(user) {
-      user.name = name;
-      user.email = email;
-      user.location = location;
-      //birthday: birthday
-      return user.save()
-        .then(function() {
-          res.status(204).end();
-        })
-        .catch(validationError(res));
+        user.name = name;
+        user.email = email;
+        user.location = location;
+        return user.save()
+          .then(function() {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
     });
 };
 

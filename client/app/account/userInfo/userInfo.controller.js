@@ -26,7 +26,6 @@ class UserInfoController {
         name: this.$scope.currentUser.name,
         email: this.$scope.currentUser.email,
         location: this.$scope.currentUser.location
-        //birthday: this.$scope.currentUser.birthday
       })
        .then(() => {
          console.log("I $promise I love you!");
