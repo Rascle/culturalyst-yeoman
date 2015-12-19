@@ -7,12 +7,13 @@ class SignupController {
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $log, $scope, $http) {
+  constructor(Auth, $state, $log, $scope, $http, $timeout) {
     this.Auth = Auth;
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
     this.$http = $http;
+    this.$timeout = $timeout;
   }
 
   currentUser() {
@@ -22,6 +23,8 @@ class SignupController {
 
   register(form) {
     this.submitted = true;
+    let context = this;
+
     let context = this;
 
     if (form.$valid) {
@@ -35,6 +38,7 @@ class SignupController {
           // birthday: null
         })
         .then(() => {
+          context.$log.log(context.user);
           // Account created, redirect to signup details view
           this.$state.go('userInfo');
         })
@@ -56,24 +60,18 @@ class SignupController {
   // edit this to work on the next page
   userDetail() {
     //this.submitted = true;
+    let context = this;
 
-  //   // could I use currentUser()()._id instead of this.Auth.getCurrentUser
-  //   this.$http.put('/api/users/' + this.Auth.getCurrentUser()._id + '/updateUserInfo', {
-  //       name: this.user.name,
-  //       email: this.user.email,
-  //       password: this.user.password,
-  //       location: this.user.location,
-  //       birthday: this.user.birthday
-  //     })
-  //     .then(() => {
-  //       // this.$state.go('main');
-  //     });
-  // }
+    //   // could I use currentUser()()._id instead of this.Auth.getCurrentUser
+    //   this.$http.put('/api/users/' + this.Auth.getCurrentUser()._id +
+    // '/updateUserInfo', { name: this.user.name, email: this.user.email,
+    // password: this.user.password, location: this.user.location, birthday:
+    // this.user.birthday }) .then(() => { // this.$state.go('main'); }); }
 
-  done() {
-    this.$state.go('main');
+    //done() {
+    //  this.$state.go('main');
+    //}
   }
-
 }
 
 angular.module('culturalystApp')

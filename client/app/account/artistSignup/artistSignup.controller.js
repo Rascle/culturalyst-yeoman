@@ -3,19 +3,20 @@
 class ArtistSignupController {
   //start-non-standard
   user = {
-    catalyst: true,
-    creative: true
+    //catalyst: true,
+    //creative: true
   };
   errors = {};
   submitted = false;
   //end-non-standard
 
-  constructor(Auth, $state, $log, $scope, $http) {
+  constructor(Auth, $state, $log, $scope, $http, $timeout) {
     this.Auth = Auth;
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
     this.$http = $http;
+    this.$timeout = $timeout;
     this.list = [];
   }
 
@@ -25,21 +26,17 @@ class ArtistSignupController {
 
   // go to content
   register() {
+    let context = this;
 
-    this.$http.put('/api/users/' + this.Auth.getCurrentUser()._id + '/updateUserInfo', {
-        catalyst: this.user.catalyst,
-        creative: this.user.creative,
+    this.$http.put('/api/users/' + this.currentUser()._id + '/updateUserInfo', {
         name: this.user.name,
         email: this.user.email,
-        password: this.user.password,
-        location: this.user.location,
-        birthday: this.user.birthday,
-        bio: this.user.bio,
+        bio: this.user.bio
       })
       .then(() => {
+        context.$timeout(this.$state.go('artistSignupContent'), 1000);
         this.$state.go('main');
       });
-
 
     // refactor to grab from the html forms
     //this.Auth.updateUserInfo({
@@ -50,7 +47,7 @@ class ArtistSignupController {
     //    this.$state.go('artistSignupContent');
     //  });
 
-    this.$state.go('artistSignupContent');
+    //this.$state.go('artistSignupContent');
 
   }
 
@@ -89,6 +86,8 @@ class ArtistSignupController {
     //    this.$state.go('main');
     //  });
 
+    // note about user is becoming a creative change the role,
+    // after submit, role changes to artist
     this.done()
   }
 

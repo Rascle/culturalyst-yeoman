@@ -33,28 +33,23 @@
   });
 </script>
 
-<!--<a ui-sref="artistSignupContent">-->
-  <!--<button>-->
-    <!--put shit here-->
-  <!--</button>-->
-<!--</a>-->
-
 <div>
-  <form ng-submit="vm.register(InfoForm)">
-    <div class="form-group" style="width: 80%; margin: 5% 10% 0% 10%">
-      <label for="exampleName">Name</label>
-      <input type="text" class="form-control" id="exampleName"
-             placeholder="Name">
+  <!--<form ng-submit="vm.register(InfoForm)">-->
+  <form>
+    <div class="form-group" style="width: 80%; margin: 5% 10% 0 10%">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" placeholder="Name"
+             value="{{vm.currentUser()().name}}">
     </div>
-    <div class="form-group" style="width: 80%; margin: 5% 10% 0% 10%">
-      <label for="exapmleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail"
-             placeholder="Email">
+    <div class="form-group" style="width: 80%; margin: 5% 10% 0 10%">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" placeholder="Email"
+             value="{{vm.currentUser()().email}}">
     </div>
     <div class="form-group" style="width: 80%; margin: 5% 10% 0% 10%">
       <label for="bio">Biography</label>
-      <textarea class="form-control" rows="3"
-                placeholder="About You"></textarea>
+      <textarea class="form-control" rows="3" placeholder="About You">
+      </textarea>
     </div>
     <div class="form-group" style="width: 80%; margin: 5% 10% 0% 10%">
       <label for="medium">Medium</label>
@@ -207,16 +202,17 @@
       </div>
     </div>
 
-    <button type="submit" class="btm btn-default" style="margin: 10% 45%" ng-click="vm.register()">
+    <button type="submit" class="btm btn-default" style="margin: 10% 45%"
+            ng-click="vm.register()">
       Next
     </button>
 
     <!--<button class="btn btn-lg btn-primary" type="submit">-->
-      <!--<a ui-sref="artistSignupInfo">-->
-        <!--<p style="color: white">-->
-          <!--next-->
-        <!--</p>-->
-      <!--</a>-->
+    <!--<a ui-sref="artistSignupInfo">-->
+    <!--<p style="color: white">-->
+    <!--next-->
+    <!--</p>-->
+    <!--</a>-->
     <!--</button>-->
 
   </form>
