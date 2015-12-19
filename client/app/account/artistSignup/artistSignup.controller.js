@@ -12,11 +12,11 @@ class ArtistSignupController {
 
   constructor(Auth, $state, $log, $scope, $http, $timeout, MediaList) {
     this.Auth = Auth;
-    this.currentUser = this.Auth.getCurrentUser();
     this.$state = $state;
     this.$log = $log;
     this.$scope = $scope;
     this.$http = $http;
+    this.$scope.currentUser = this.Auth.getCurrentUser();
     this.$timeout = $timeout;
     this.MediaList = MediaList;
     this.list = [];

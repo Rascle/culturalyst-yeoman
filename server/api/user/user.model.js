@@ -42,6 +42,7 @@ module.exports = function(sequelize, DataTypes) {
     img: DataTypes.STRING,
     medium: DataTypes.STRING,
     submedium: DataTypes.STRING,
+    reward: DataTypes.STRING,
     earned: DataTypes.STRING,
     supporters: DataTypes.STRING,
     short: DataTypes.TEXT,

@@ -87,8 +87,7 @@ exports.show = function(req, res, next) {
 
 exports.showResults = function(req, res, next) {
   var query;
-
-  if (req.params.submedium !== undefined) {
+  if (req.params.submedium !== 'undefined' && req.params.submedium !== 'null'){
     query = {submedium: req.params.submedium};
     console.log(req.params.submedium);
   } else {
@@ -168,6 +167,31 @@ exports.updateUserInfo = function(req, res, next) {
         user.name = name;
         user.email = email;
         user.location = location;
+        return user.save()
+          .then(function() {
+            res.status(204).end();
+          })
+          .catch(validationError(res));
+    });
+};
+
+exports.updateArtistInfo = function(req, res, next) {
+  var userId = req.user._id;
+  var bio = req.body.bio;
+  var medium = req.body.medium;
+  var submedium = req.body.submedium;
+  var reward = req.body.reward;
+
+  User.find({
+      where: {
+        _id: userId
+      }
+    })
+    .then(function(user) {
+        user.bio = bio;
+        user.medium = medium;
+        user.submedium = submedium;
+        user.reward = reward;
         return user.save()
           .then(function() {
             res.status(204).end();
