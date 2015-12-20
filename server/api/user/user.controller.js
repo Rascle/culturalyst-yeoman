@@ -188,7 +188,7 @@ exports.updateArtistInfo = function(req, res, next) {
       }
     })
     .then(function(user) {
-        user.bio = bio;
+        user.short = bio;
         user.medium = medium;
         user.submedium = submedium;
         user.reward = reward;

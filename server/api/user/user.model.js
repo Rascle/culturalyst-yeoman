@@ -65,7 +65,13 @@ module.exports = function(sequelize, DataTypes) {
           'name': this.name,
           'role': this.role,
           'location': this.location,
-          'birthday': this.birthday
+          'short': this.short,
+          'medium': this.medium,
+          'submedium': this.submedium,
+          'picUrl': this.picUrl,
+          'img': this.img,
+          'earned': this.earned,
+          'supporters': this.supporters
         };
       },
 

@@ -36,7 +36,7 @@ class ArtistSignupController {
   register() {
     let context = this;
 
-    this.$http.put('/api/users/' + this.currentUser._id + '/updateArtistInfo', {
+    this.$http.put('/api/users/' + this.$scope.currentUser._id + '/updateArtistInfo', {
       bio: context.$scope.bio,
       medium: context.$scope.selectedMedium,
       submedium: context.$scope.selectedSubmedium
