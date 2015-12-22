@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    submedium: {
+    submedium_id: {
       type: DataTypes.STRING,
       defaultValue: 'other'
     },
