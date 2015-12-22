@@ -35,8 +35,13 @@ exports.index = function(req, res) {
       attributes: [
         '_id',
         'name',
+        'location',
+        'birthday',
         'email',
         'role',
+        'supporters',
+        'budget',
+        'earned',
         'provider'
       ]
     })
@@ -78,7 +83,7 @@ exports.show = function(req, res, next) {
       if (!user) {
         return res.status(404).end();
       }
-      res.json(user);
+      res.json(user.profile);
     })
     .catch(function(err) {
       return next(err);
@@ -213,10 +218,15 @@ exports.me = function(req, res, next) {
       attributes: [
         '_id',
         'name',
-        'email',
-        'role',
         'location',
         'birthday',
+        'email',
+        'role',
+        'profileImg',
+        'coverImg',
+        'supporters',
+        'budget',
+        'earned',
         'provider'
       ]
     })

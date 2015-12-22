@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Content', {
+  return sequelize.define('UserRewards', {
     _id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,11 +15,16 @@ module.exports = function(sequelize, DataTypes) {
         key: _id,
       }
     },
-    title: DataTypes.STRING,
-    caption: DataTypes.STRING,
-    thumbUrl: DataTypes.STRING,
-    medUrl: DataTypes.STRING,
-    fullUrl: DataTypes.STRING,
+    reward_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: Reward,
+        key: _id,
+      }
+    },
+    amount: DataTypes.DECIMAL,
+    name: DataTypes.STRING,
+    info: DataTypes.STRING,
     active: DataTypes.BOOLEAN
   });
 };

@@ -10,12 +10,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     medium: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false
-    },
-    submedium_id: {
-      type: DataTypes.STRING,
-      defaultValue: 'other'
-    },
+    }
     active: DataTypes.BOOLEAN
   });
 };

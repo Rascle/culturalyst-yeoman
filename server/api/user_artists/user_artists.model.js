@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Content', {
+  return sequelize.define('UserArtists', {
     _id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -15,11 +15,15 @@ module.exports = function(sequelize, DataTypes) {
         key: _id,
       }
     },
-    title: DataTypes.STRING,
-    caption: DataTypes.STRING,
-    thumbUrl: DataTypes.STRING,
-    medUrl: DataTypes.STRING,
-    fullUrl: DataTypes.STRING,
+    artist_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: User,
+        key: _id,
+      }
+    },
+    name: DataTypes.STRING,
+    info: DataTypes.STRING,
     active: DataTypes.BOOLEAN
   });
 };

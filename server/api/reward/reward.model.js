@@ -8,11 +8,19 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: User,
+        key: _id,
+      }
+    },
+    title: DataTypes.STRING,
+    type: DataTypes.STRING,
     amount: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    title: DataTypes.STRING,
     description: DataTypes.STRING,
     active: DataTypes.BOOLEAN
   });
