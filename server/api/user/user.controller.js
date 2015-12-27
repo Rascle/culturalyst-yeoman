@@ -179,28 +179,28 @@ exports.updateUserInfo = function(req, res, next) {
     });
 };
 
-exports.updateImage = function(req, res, next) {
-  var userId = req.user._id;
-  var profileImg = req.body.profileImg;
-  var coverImg = req.body.coverImg;
+// exports.updateImage = function(req, res, next) {
+//   var userId = req.user._id;
+//   var profileImg = req.body.profileImg;
+//   var coverImg = req.body.coverImg;
 
-  User.find({
-    where: {
-      _id: userId
-    }
-  }).then(function(user) {
-    if (!profileImg) {
-      user.coverImg = coverImg;
-    } else if (!coverImg) {
-      user.profileImg = profileImg;
-    }
-    return user.save()
-      .then(function() {
-        res.status(204).end();
-      })
-      .catch(validationError(res));
-  })
-};
+//   User.find({
+//     where: {
+//       _id: userId
+//     }
+//   }).then(function(user) {
+//     if (!profileImg) {
+//       user.coverImg = coverImg;
+//     } else if (!coverImg) {
+//       user.profileImg = profileImg;
+//     }
+//     return user.save()
+//       .then(function() {
+//         res.status(204).end();
+//       })
+//       .catch(validationError(res));
+//   })
+// };
 
 exports.updateArtistInfo = function(req, res, next) {
   var userId = req.user._id;

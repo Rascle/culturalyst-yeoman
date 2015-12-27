@@ -16,7 +16,7 @@ router.get('/discovery/:medium/:submedium', controller.showResults);
 router.get('/artist/:id', controller.show);
 router.put('/:id/updateUserInfo', auth.isAuthenticated(), controller.updateUserInfo);
 router.put('/:id/updateArtistInfo', auth.isAuthenticated(), controller.updateArtistInfo);
-router.put('/updateImage', auth.isAuthenticated(), controller.updateImage);
+// router.put('/updateImage', auth.isAuthenticated(), controller.updateImage);
 // router.get('/:id/showMedia', controller.showMedia);
 
 module.exports = router;

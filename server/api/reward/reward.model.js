@@ -8,11 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: 'User',
-      referencesKey: '_id'
-    },
+    user_id: DataTypes.INTEGER,
     title: DataTypes.STRING,
     type: DataTypes.STRING,
     amount: {
