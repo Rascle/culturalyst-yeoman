@@ -10,17 +10,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     user_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: User,
-        key: _id,
-      }
+      references: 'User',
+      referencesKey: '_id'
     },
     reward_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: Reward,
-        key: _id,
-      }
+      references: 'Reward',
+      referencesKey: '_id'
     },
     amount: DataTypes.DECIMAL,
     name: DataTypes.STRING,

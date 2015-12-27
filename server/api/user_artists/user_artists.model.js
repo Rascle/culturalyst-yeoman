@@ -10,17 +10,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     user_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: User,
-        key: _id,
-      }
+      references: 'User',
+      referencesKey: '_id'
     },
     artist_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: User,
-        key: _id,
-      }
+      references: 'User',
+      referencesKey: '_id'
     },
     name: DataTypes.STRING,
     info: DataTypes.STRING,

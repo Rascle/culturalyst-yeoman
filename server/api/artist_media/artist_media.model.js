@@ -10,17 +10,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     user_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: User,
-        key: _id,
-      }
+      references: 'User',
+      referencesKey: '_id'
     },
     submedium_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: Submedia,
-        key: _id,
-      }
+      references: 'Submedia',
+      referencesKey: '_id'
     },
     active: DataTypes.BOOLEAN
   });

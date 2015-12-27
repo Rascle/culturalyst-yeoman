@@ -11,10 +11,8 @@ module.exports = function(sequelize, DataTypes) {
     submedium: DataTypes.STRING,
     medium_id: {
       type: DataTypes.INTEGER,
-      references: {
-        model: Media,
-        key: _id,
-      }
+      references: 'Media',
+      referencesKey: '_id'
     },
     active: DataTypes.BOOLEAN
   });

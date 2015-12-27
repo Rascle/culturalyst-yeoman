@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false
-    }
+    },
     active: DataTypes.BOOLEAN
   });
 };

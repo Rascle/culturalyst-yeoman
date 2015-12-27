@@ -157,7 +157,6 @@ exports.changePassword = function(req, res, next) {
  * Update the users information
  */
 exports.updateUserInfo = function(req, res, next) {
-  console.log("Updating Info!");
   var userId = req.user._id;
   var name = req.body.name;
   var email = req.body.email;
@@ -180,6 +179,29 @@ exports.updateUserInfo = function(req, res, next) {
     });
 };
 
+exports.updateImage = function(req, res, next) {
+  var userId = req.user._id;
+  var profileImg = req.body.profileImg;
+  var coverImg = req.body.coverImg;
+
+  User.find({
+    where: {
+      _id: userId
+    }
+  }).then(function(user) {
+    if (!profileImg) {
+      user.coverImg = coverImg;
+    } else if (!coverImg) {
+      user.profileImg = profileImg;
+    }
+    return user.save()
+      .then(function() {
+        res.status(204).end();
+      })
+      .catch(validationError(res));
+  })
+};
+
 exports.updateArtistInfo = function(req, res, next) {
   var userId = req.user._id;
   var bio = req.body.bio;
@@ -193,6 +215,7 @@ exports.updateArtistInfo = function(req, res, next) {
       }
     })
     .then(function(user) {
+        user.role = "artist";
         user.short = bio;
         user.medium = medium;
         user.submedium = submedium;
